@@ -26,7 +26,8 @@ CUT_COLUMNS = [
         'Year', # Repeated
         'Rank', # Dependent on other records
         'Unnamed: 0', # Number of record in IGN file
-        'url' # Irrelevant
+        'url', # Irrelevant
+        'genre'
         ]
 
 # We also substitute the platform names used
@@ -131,9 +132,6 @@ def merge(critics_filename, sales_filename, output_filename):
     
     # We cut out repeated / irrelevant columns
     output = output.drop(CUT_COLUMNS, axis=1)
-    
-    # We cut out all columns containing null values
-    output = output.loc[:, output.all()]
     
     print("Size of the reduced version:")
     print(output.shape)
